@@ -1,12 +1,13 @@
 "use client";
 
-
+import Link from 'next/link';
 // Interface untuk tipe props DataCard
 interface DataCardProps {
     data: Array<{
         id: string,
         judul: string,
         caption: string,
+        detail: string,
     }>,
 }
 
@@ -15,9 +16,9 @@ function DataCard({ data }: DataCardProps) {
         <div className="w-full cursor-pointer flex-wrap flex m-0">
             {data.map((item, index) => (
                 <div key={index} className="flex flex-wrap w-1/3 p-2">
-                    <div className="w-full p-2 font-roboto-normal drop-shadow-sm rounded-md border-2 border-m-400 hover:bg-m-200 flex flex-wrap justify-content-center align-items-center">
+                    <Link href="/login/detaildata" className="w-full p-2 font-roboto-normal drop-shadow-sm rounded-md border-2 border-m-400 hover:bg-m-200 flex flex-wrap justify-content-center align-items-center">
                         <div className="w-1/3  grid place-content-center h-full">
-                            
+
                         </div>
                         <div className="my-3 grid place-items-stretch w-2/3">
                             <div className="w-fit grid place-items-center ">
@@ -35,10 +36,13 @@ function DataCard({ data }: DataCardProps) {
                                 <div className='label-l14 grid place-items-center text-12 text-m-500'>
                                     {item.caption}
                                 </div>
-                              
+                                <div className='label-l14 grid place-items-center text-12 text-m-500'>
+                                    {item.detail}
+                                </div>
+
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
             ))}
         </div>

@@ -6,6 +6,30 @@ import { Prisma, GeoData } from "@prisma/client";
 // Tipe untuk input GeoData tanpa id dan geoloc_id
 type GeoDataInput = Omit<GeoData, 'id' | 'geoloc_id'>
 
+// Tipe untuk input GeoLocation tanpa id, dengan properti geodatas
+// type GeoLocInput = Omit<GeoLocation, 'id'> & {
+//     geodatas: {
+//         create: undefined,
+//     }
+// }
+
+// Fungsi untuk memproses data kabupaten/kota dari JSON
+// function indjson() {
+//     const { features } = ind_kabkota as any;
+//     const ind = features.map((item: any) => {
+//         const temp: GeoLocInput = {
+//             geoId: Number(item.properties.ID_2),
+//             name: item.properties.TYPE_2 + " " + item.properties.NAME_2,
+//             prov: item.properties.NAME_1,
+//             geojs: item,
+//             geodatas: {
+//                 create: undefined,
+//             },
+//         };
+//         return temp;
+//     });
+//     return { ind };
+// }
 
 // Fungsi untuk memproses data layanan dari JSON
 function datalayananjson() {
@@ -26,7 +50,8 @@ async function main() {
     // Konversi data layanan ke format Prisma
     const prismageodata = res as Prisma.GeoDataCreateManyInput[];
     
-   
+    // const prismageoloc = ind as Prisma.GeoLocationCreateInput[];
+
     // Menghapus koleksi lama agar tidak ada data duplikat
     try {
         const dropuser = await prisma.$runCommandRaw({

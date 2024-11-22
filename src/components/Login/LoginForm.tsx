@@ -42,7 +42,7 @@ function LoginForm() {
   return (
     <>
       <ModalComponent optModal={optModal} setModal={setModal} />
-      <div className="bg-[#003A40] w-screen h-full">
+      <div className="bg-[#003A40] w-screen h-screen">
         <div className="flex w-full h-full py-10 my-auto mx-autorounded-sm dark:border-strokedark dark:bg-boxdark">
           <div className=" mx-12 w-full grid content-center  place-items-start">
             <div className=" w-full py-3  ">

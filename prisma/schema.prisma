@@ -23,4 +23,5 @@ model GeoData {
     id      String @id @default(auto()) @map("_id") @db.ObjectId
     judul   String
     caption String
+    detail String
 }

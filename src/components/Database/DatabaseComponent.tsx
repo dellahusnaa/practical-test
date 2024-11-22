@@ -12,6 +12,7 @@ function DatabaseComponent() {
     type GeoData = {
         id: string;
         judul: string;
+        detail: string;
         caption: string;
     };
 
@@ -24,6 +25,7 @@ function DatabaseComponent() {
     const [formData, setFormData] = useState({
         judul: "",
         caption: "",
+        detail: "",
     });
 
     const geodataAPI = useCallback(async () => {
@@ -53,6 +55,7 @@ function DatabaseComponent() {
                 body: JSON.stringify({
                     judul: formData.judul,
                     caption: formData.caption,
+                    detail: formData.detail,
                 }),
             });
 
@@ -108,7 +111,7 @@ function DatabaseComponent() {
     return (
         <>
             <SuccessModal />
-            <div className="mt-10 grid place-content-center h-full w-full">
+            <div className="mt-10 grid place-content-center w-full">
                 <p className="grid text-46 place-content-center mb-4 font-extrabold leading-none tracking-tight text-m-200 dark:text-white">
                     Database Bencana Alam
                 </p>
@@ -180,6 +183,18 @@ function DatabaseComponent() {
                             value={formData.caption}
                             onChange={({ target }) =>
                                 setFormData({ ...formData, caption: target.value })
+                            }
+                        />
+                        <TextField
+                            margin="dense"
+                            name="Detail"
+                            label="Detail"
+                            type="textarea"
+                            fullWidth
+                            variant="outlined"
+                            value={formData.detail}
+                            onChange={({ target }) =>
+                                setFormData({ ...formData, detail: target.value })
                             }
                         />
                     </DialogContent>
